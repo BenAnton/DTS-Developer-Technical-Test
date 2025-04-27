@@ -7,6 +7,8 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [showModel, setShowModel] = useState(false);
   const [editTodo, setEditTodo] = useState(null);
+  const [activeFilter, setActiveFilter] = useState("All");
+  const [filteredTodos, setFilteredTodos] = useState([]);
 
   const getTodos = async () => {
     const res = await fetch("http://localhost:5001/api/todos", {
@@ -15,6 +17,8 @@ function App() {
     const data = await res.json();
     console.log(data);
     setTodos(data);
+
+    applyFilter(activeFilter, data);
   };
 
   const closeModel = () => {
@@ -28,8 +32,34 @@ function App() {
   };
 
   useEffect(() => {
-    getTodos();
+    const loadData = async () => {
+      await getTodos();
+      applyFilter("All", todos);
+    };
+
+    loadData();
   }, []);
+
+  const applyFilter = (filter, todoData = todos) => {
+    setActiveFilter(filter);
+
+    switch (filter) {
+      case "Incomplete":
+        setFilteredTodos(
+          todoData.filter((todo) => todo.status === "Incomplete")
+        );
+        break;
+
+      case "Complete":
+        setFilteredTodos(todoData.filter((todo) => todo.status === "Complete"));
+        break;
+
+      case "All":
+      default:
+        setFilteredTodos(todoData);
+        break;
+    }
+  };
 
   return (
     <>
@@ -42,15 +72,33 @@ function App() {
           >
             +
           </button>
-          <button className="Sidebar-Button">Overdue</button>
-          <button className="Sidebar-Button">Due Today</button>
-          <button className="Sidebar-Button">Due This Week</button>
-          <button className="Sidebar-Button">Due This Month</button>
-          <button className="Sidebar-Button">All Outstanding</button>
-          <button className="Sidebar-Button">Completed</button>
+          <button
+            className={`Sidebar-Button ${
+              activeFilter === "All" ? "active-filter" : ""
+            }`}
+            onClick={() => applyFilter("All")}
+          >
+            All
+          </button>
+          <button
+            className={`Sidebar-Button ${
+              activeFilter === "Incomplete" ? "active-filter" : ""
+            }`}
+            onClick={() => applyFilter("Incomplete")}
+          >
+            Incomplete
+          </button>
+          <button
+            className={`Sidebar-Button ${
+              activeFilter === "Complete" ? "active-filter" : ""
+            }`}
+            onClick={() => applyFilter("Complete")}
+          >
+            Complete
+          </button>
         </div>
         <TodoList
-          todos={todos}
+          todos={filteredTodos}
           onTodoUpdated={getTodos}
           onEditTodo={handleEditTodo}
         />

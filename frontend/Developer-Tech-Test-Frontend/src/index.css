@@ -152,6 +152,7 @@ body html {
   flex: none;
   max-width: 25%;
   margin: 0;
+  text-align: left;
 }
 
 .Sidebar-Button-Plus {
@@ -165,4 +166,14 @@ body html {
 
 .Sidebar-Button-Plus:hover {
   border: 2px solid black;
+}
+.active-filter {
+  background-color: #f7f7f8;
+  border: 2px solid black;
+}
+
+.Model-Button-Div {
+  display: flex;
+  margin-top: 10px;
+  justify-content: center;
 }

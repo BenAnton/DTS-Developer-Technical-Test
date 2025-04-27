@@ -11,19 +11,16 @@ function TodoFormModel({ todo, onSuccess, onClose }) {
     if (todo) {
       setTitle(todo.title || "");
       setDescription(todo.description || "");
-
-      if (todo.deadline) {
-        const date = new Date(todo.deadline);
-        const formattedDate = date.toISOString().split("T")[0];
-        setDeadline(formattedDate);
-      } else {
-        setDeadline("");
-      }
+      setDeadline(todo.deadline || "");
+    } else {
+      setDeadline("");
     }
   }, [todo]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    console.log("Submitting Form with Deadline: ", deadline);
 
     if (isEditMode) {
       await fetch(`http://localhost:5001/api/todos/${todo._id}`, {
@@ -38,7 +35,7 @@ function TodoFormModel({ todo, onSuccess, onClose }) {
         body: JSON.stringify({ title, description, deadline }),
       });
     }
-
+    console.log("Deadline Post: ", deadline);
     setTitle("");
     setDescription("");
     setDeadline("");
@@ -71,19 +68,25 @@ function TodoFormModel({ todo, onSuccess, onClose }) {
               className="Model-Box-Item"
               type="date"
               value={deadline}
-              onChange={(e) => setDeadline(e.target.value)}
+              onChange={(e) => {
+                setDeadline(e.target.value);
+                console.log("Deadline changed", e.target.value);
+              }}
               placeholder="Deadline"
               required
             />
-            <button className="Model-Box-Item Model-Box-Button" type="submit">
-              {isEditMode ? "Update Task" : "Add Task"}
-            </button>
-            <button
-              className="Model-Box-Item Model-Box-Button"
-              onClick={onClose}
-            >
-              Cancel
-            </button>
+            <div className="Model-Button-Div">
+              <button className="Model-Box-Item Model-Box-Button" type="submit">
+                {isEditMode ? "Update Task" : "Add Task"}
+              </button>
+              <button
+                className="Model-Box-Item Model-Box-Button"
+                onClick={onClose}
+                type="button"
+              >
+                Cancel
+              </button>
+            </div>
           </form>
         </div>
       </div>

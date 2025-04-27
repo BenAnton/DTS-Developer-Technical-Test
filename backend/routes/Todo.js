@@ -6,13 +6,12 @@ const Todo = require("../models/Todo");
 router.post("/", async (req, res) => {
   try {
     const { title, description, status, deadline } = req.body;
-    console.log("Received deadline: ", deadline);
 
     const newTodo = new Todo({
       title,
       description,
       status,
-      deadline: deadline ? new Date(deadline) : undefined,
+      deadline,
     });
 
     const todo = await newTodo.save();
@@ -37,9 +36,23 @@ router.get("/", async (req, res) => {
 // Update a Todo using ID
 router.put("/:id", async (req, res) => {
   try {
-    const updatedTodo = await Todo.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-    });
+    const { title, description, status, deadline } = req.body;
+
+    const updatedFields = {
+      title,
+      description,
+      status,
+      deadline: deadline || undefined,
+    };
+
+    const updatedTodo = await Todo.findByIdAndUpdate(
+      req.params.id,
+      updatedFields,
+      {
+        new: true,
+      }
+    );
+
     res.json(updatedTodo);
   } catch (err) {
     res.status(400).json({ error: err.message });

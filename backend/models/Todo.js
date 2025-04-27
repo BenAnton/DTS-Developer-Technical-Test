@@ -8,7 +8,7 @@ const TodoSchema = new mongoose.Schema({
     enum: ["Incomplete", "Complete"],
     default: "Incomplete",
   },
-  deadline: { type: Date },
+  deadline: { type: String },
 });
 
 module.exports = mongoose.model("Todo", TodoSchema);

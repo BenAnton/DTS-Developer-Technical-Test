@@ -1,0 +1,168 @@
+:root {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body html {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: #f7f7f7;
+}
+
+.Page-Title {
+  height: 10vh;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+  background: #2a7b9b;
+  background: linear-gradient(
+    90deg,
+    rgba(42, 123, 155, 1) 0%,
+    rgba(87, 199, 133, 1) 50%,
+    rgba(164, 210, 107, 1) 75%,
+    rgba(237, 221, 83, 1) 100%
+  );
+}
+
+.Main-Flex {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: #f7f7f7;
+}
+
+.Sidebar {
+  width: 30%;
+  background-color: #f7f7f7;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.Model-Box-Cont {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.Model-Box {
+  position: relative;
+  background-color: white;
+}
+
+.Form-Flex {
+  padding: 25px;
+}
+
+.Model-Title {
+  margin: 0;
+  padding: 15px;
+  background: #2a7b9b;
+  background: linear-gradient(
+    90deg,
+    rgba(42, 123, 155, 1) 0%,
+    rgba(87, 199, 133, 1) 50%,
+    rgba(164, 210, 107, 1) 75%,
+    rgba(237, 221, 83, 1) 100%
+  );
+}
+
+.Model-Box-Button {
+  cursor: pointer;
+  color: white;
+  background-color: black;
+  border: none;
+  padding: 15px;
+  border-radius: 15px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.Model-Box-Button:hover {
+  color: black;
+  background-color: white;
+  border: 2px solid black;
+}
+
+.Model-Box-Item {
+  margin: 5px;
+}
+
+.Sidebar-Button {
+  font-size: 1.2rem;
+  width: 100%;
+  padding: 20px;
+  border: none;
+  background-color: white;
+  margin-block: 10px;
+  text-align: left;
+  border-radius: 15px;
+}
+
+.Sidebar-Button:hover {
+  cursor: pointer;
+  font-weight: 900;
+  border: 2px solid black;
+}
+
+.Todo-Card-Flex {
+  display: flex;
+  background-color: white;
+  width: 90%;
+  align-items: center;
+  height: auto;
+  justify-content: space-between;
+  padding: 15px;
+  flex-wrap: wrap;
+  border-radius: 15px;
+}
+
+.Todo-Card-Flex:hover {
+  border: 2px solid black;
+}
+
+.Todo-List-Ul {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #f7f7f7;
+}
+
+.Todo-List-Button-Div {
+  display: flex;
+  gap: 5px;
+}
+
+.Todo-Text {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  flex: none;
+  max-width: 25%;
+  margin: 0;
+}
+
+.Sidebar-Button-Plus {
+  font-size: 2rem;
+  text-align: center;
+  border-radius: 100px;
+  width: 100px;
+  height: 100px;
+  align-self: center;
+}
+
+.Sidebar-Button-Plus:hover {
+  border: 2px solid black;
+}

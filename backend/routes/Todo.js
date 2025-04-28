@@ -33,6 +33,21 @@ router.get("/", async (req, res) => {
   }
 });
 
+// Retrieve by id
+router.get("/:id", async (req, res) => {
+  try {
+    const todo = await Todo.findById(req.params.id);
+
+    if (!todo) {
+      return res.status(404).json({ message: "Not Found" });
+    }
+
+    res.json(todo);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // Update a Todo using ID
 router.put("/:id", async (req, res) => {
   try {

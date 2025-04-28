@@ -1,64 +1,52 @@
-DTS Developer Technical Test
+# Project Setup
 
-Requirements:
-Objective
-To assess your ability to build a simple API and frontend using best coding practices.
+## Technologies Used
+•⁠  ⁠*Frontend:* JavaScript, Vanilla CSS, React
+•⁠  ⁠*Backend:* Express, MongoDB
 
-Scenario
-HMCTS requires a new system to be developed so caseworkers can keep track of their tasks. Your technical test is to develop that new system so caseworkers can efficiently manage their tasks.
+## Setup Instructions
 
-Task Requirements
-Backend API
-The backend should be able to:
+### 1. Install Node.js Dependencies
+Run the following command in both the ⁠ /backend ⁠ and ⁠ /frontend ⁠ directories:
 
-Create a task with the following properties:
-Title
-Description (optional field)
-Status
-Due date/time
-Retrieve a task by ID
-Retrieve all tasks
-Update the status of a task
-Delete a task
-Frontend Application
-The frontend should be able to:
+⁠ bash
+npm install
+ ⁠
 
-Create, view, update, and delete tasks
-Display tasks in a user-friendly interface
-Technical Requirements
-Here are a few starter repositories if you would like to use our tech stack:
+### 2. Install and Start MongoDB
+•⁠  ⁠Install MongoDB if you haven't already.
+•⁠  ⁠Start MongoDB by running:
 
-Backend Starter Repo
-Frontend Starter Repo
-You can use any language you are comfortable with or our own stack:
+⁠ bash
+mongod
+ ⁠
 
-Backend: Any language or framework of your choice
-Frontend: Any language or framework of your choice
-Implement unit tests
-Store data in a database
-Include validation and error handling
-Document API endpoints
-Submission Guidelines
-Create repositories on GitHub and add add the links to your application
-Include a helpful README.md!
-Happy coding!
+	⁠This will start the database server at: ⁠ mongodb://127.0.0.1:27017 ⁠
 
----
+### 3. Start the Servers
+•⁠  ⁠Start the *backend* server:
 
-Frontend: Javascript, vanilla CSS and React.
-Backend: Express and MongoDB.
+⁠ bash
+cd backend
+npm start
+ ⁠
 
-Setup:
-Install Node.js - run npm install in both /backend and /frontend.
+•⁠  ⁠Start the *frontend* server:
 
-Install MongoDb - Once installed run mongod in terminal to start, this will start the database at: mongodb://127.0.0.1:27017
+⁠ bash
+cd frontend
+npm start
+ ⁠
 
-Start the backend Server: "npm start" from /backend
-Start the frontend Server: "npm start" from /frontend
+### 4. Open in Browser
+Visit:
 
-Open your broswer and navigate to: http://localhost:5173
+⁠ text
+http://localhost:5173
+ ⁠
 
-Should you want to deploy the project in production then some sensitive data should be moved to a .ENV file.
+to view the application.
 
-Final Note:
-I only found the job posting on Saturday 26th, so the project has been completed with limited time available, I hope that this does not reduce my chances of interview, thank you for your time in reviewing this.
+## Production Deployment
+
+If you plan to deploy the project to production, be sure to move any sensitive data into a ⁠ .env ⁠ file.
